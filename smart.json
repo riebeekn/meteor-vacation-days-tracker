@@ -1,0 +1,10 @@
+{
+  "packages": {
+    "iron-router": {},
+    "bootstrap-3": {},
+    "riebeekn-modal-accounts": {
+      "path": "/Users/nickriebeek/Documents/Dev/Meteor/local-packages/riebeekn-modal-accounts"
+    },
+    "fullcalendar": {}
+  }
+}

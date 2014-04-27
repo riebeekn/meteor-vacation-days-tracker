@@ -1,0 +1,32 @@
+/* calendar styles */
+.fc-today {
+	background-color: transparent;
+}
+.fc-day.fc-sat, .fc-day.fc-sun, .stat, .holiday {
+	background-color: #F5F5F5;
+}
+.sick-day {
+	background-color: #fce2e0;
+}
+
+.fc-button {
+	border-width: 1px;
+}
+
+.fc-header-title h2 {
+	font-size: 24px;
+}
+
+/* side-bar styles */
+#sidebar, #content {
+	margin-left: 0px;
+}
+
+#sidebar input {
+	width: 40px;
+}
+
+#sidebar td {
+    padding-top: .2em;
+    padding-bottom: .2em;
+}
