@@ -1,0 +1,1 @@
+Allocations = new Meteor.Collection('allocations');
