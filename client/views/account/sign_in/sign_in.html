@@ -1,0 +1,21 @@
+<template name="signIn">
+  <div class="modal-body">
+  	<form class="form-horizontal" id="signIn">
+			<div id="email-group" class="control-group">
+        <input type="email" id="email" name="email" placeholder="Email"/>
+        <small id='email-error'></small>
+			</div>
+			<div id="password-group" class="control-group">
+      	<input type="password" id="password" name="password" placeholder="Password"/>
+    	</div>
+    	<div class="control-group">
+      	<button type="submit" value="Submit" class="btn btn-primary">
+          Sign in
+        </button>
+			</div>
+			<div class="control-group">
+  			<a href="#" id="forgotPassword">Forgot password</a> / <a href="#" id="signUp">Sign Up</a>
+			</div>
+		</form>
+	</div>
+</template>

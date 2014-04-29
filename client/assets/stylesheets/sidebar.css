@@ -1,0 +1,21 @@
+#sidebar {
+	margin-top: 15px;
+}
+
+#sidebar input {
+	width: 35px;
+}
+
+#sidebar td {
+    padding-top: .2em;
+    padding-bottom: .2em;
+}
+
+#sidebar .badge {
+	margin-bottom: 15px;
+	margin-left: 20px;
+}
+
+#sidebar .remaining {
+	padding-left: 10px;
+}

@@ -1,26 +1,26 @@
 <template name="daysRemaining">
-  <div class="container" id="sidebar">
+  <div id="sidebar">
     <table>
       <thead>
         <th></th>
         <th>Allocated</th>
-        <th>Remaining</th>
+        <th class="remaining">Remaining</th>
       </thead>
       <tbody>
         <tr>
-          <td class="col-md-2">Vacation</td>
-          <td class="col-md-1"><input id="vacation" type="number" value="{{yearlyVacation}}"/></td>
-          <td class="col-md-1"><span class="badge">{{vacationRemaining}}</span></td>
+          <td>Vacation</td>
+          <td><input id="vacation" type="number" value="{{yearlyVacation}}"/></td>
+          <td><span class="badge">{{vacationRemaining}}</span></td>
         </tr>
         <tr>
-          <td class="col-md-2">Personal days</td>
-          <td class="col-md-1"><input id="pd" type="number" value="{{yearlyPD}}"/></td>
-          <td class="col-md-1"><span class="badge">{{pdRemaining}}</span></td>
+          <td>Personal days</td>
+          <td><input id="pd" type="number" value="{{yearlyPD}}"/></td>
+          <td><span class="badge">{{pdRemaining}}</span></td>
         </tr>
         <tr>
-          <td class="col-md-2">Sick days</td>
-          <td class="col-md-1"><input id="sd" type="number" value="{{yearlySickDays}}"/></td>
-          <td class="col-md-1"><span class="badge">{{sdRemaining}}</span></td>
+          <td>Sick days</td>
+          <td><input id="sd" type="number" value="{{yearlySickDays}}"/></td>
+          <td><span class="badge">{{sdRemaining}}</span></td>
         </tr>
       </tbody>
     </table>

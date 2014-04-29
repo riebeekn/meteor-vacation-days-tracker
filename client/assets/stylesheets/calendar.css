@@ -1,4 +1,3 @@
-/* calendar styles */
 .fc-today {
 	background-color: transparent;
 }
@@ -15,18 +14,4 @@
 
 .fc-header-title h2 {
 	font-size: 24px;
-}
-
-/* side-bar styles */
-#sidebar, #content {
-	margin-left: 0px;
-}
-
-#sidebar input {
-	width: 40px;
-}
-
-#sidebar td {
-    padding-top: .2em;
-    padding-bottom: .2em;
 }
