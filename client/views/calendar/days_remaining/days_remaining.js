@@ -21,45 +21,48 @@ Template.daysRemaining.helpers ({
 
 Template.daysRemaining.events({
 	'change #vacation': function (e, t) {
-
-		var user = Meteor.user()
-		var existingAllocationRecord = Allocations.findOne({ userId: user._id});
 		var vacationAllocated = t.find('#vacation').value;
+		var allocation = {
+			days: vacationAllocated,
+			type: constants.VACATION_DAY
+		};
 
-		if (existingAllocationRecord) {
-			Allocations.update(existingAllocationRecord._id, { $set: { vacation: vacationAllocated } });
-		} else {
-			Allocations.insert({userId: user._id, vacation: vacationAllocated});
-		}
+		Meteor.call('save', allocation, function(error, allocationId) {
+			if (error) {
+				throwError(error.reason);
+			} 
+		});
 	},
 	'change #pd': function (e, t) {
-
-		var user = Meteor.user()
-		var existingAllocationRecord = Allocations.findOne({ userId: user._id});
 		var pdAllocated = t.find('#pd').value;
+		var allocation = {
+			days: pdAllocated,
+			type: constants.PERSONAL_DAY
+		};
 
-		if (existingAllocationRecord) {
-			Allocations.update(existingAllocationRecord._id, { $set: { personal_days: pdAllocated } });
-		} else {
-			Allocations.insert({userId: user._id, personal_days: pdAllocated});
-		}
+		Meteor.call('save', allocation, function(error, allocationId) {
+			if (error) {
+				throwError(error.reason);
+			} 
+		});
 	},
 	'change #sd': function (e, t) {
-
-		var user = Meteor.user()
-		var existingAllocationRecord = Allocations.findOne({ userId: user._id});
 		var sdAllocated = t.find('#sd').value;
+		var allocation = {
+			days: sdAllocated,
+			type: constants.SICK_DAY
+		};
 
-		if (existingAllocationRecord) {
-			Allocations.update(existingAllocationRecord._id, { $set: { sick_days: sdAllocated } });
-		} else {
-			Allocations.insert({userId: user._id, sick_days: sdAllocated});
-		}
+		Meteor.call('save', allocation, function(error, allocationId) {
+			if (error) {
+				throwError(error.reason);
+			} 
+		});
 	}
 });
 
 var vacationAllocated = function() {
-	var existingAllocationRecord = Allocations.findOne({ userId: Meteor.user()._id });
+	var existingAllocationRecord = getAllocations();
 	if (existingAllocationRecord && existingAllocationRecord.vacation) {
 		return existingAllocationRecord.vacation;
 	} else {
@@ -68,7 +71,7 @@ var vacationAllocated = function() {
 }
 
 var pdAllocated = function() {
-	var existingAllocationRecord = Allocations.findOne({ userId: Meteor.user()._id });
+	var existingAllocationRecord = getAllocations();
 	if (existingAllocationRecord && existingAllocationRecord.personal_days) {
 		return existingAllocationRecord.personal_days;
 	} else {
@@ -77,10 +80,14 @@ var pdAllocated = function() {
 }
 
 var sdAllocated = function() {
-	var existingAllocationRecord = Allocations.findOne({ userId: Meteor.user()._id });
+	var existingAllocationRecord = getAllocations();
 	if (existingAllocationRecord && existingAllocationRecord.sick_days) {
 		return existingAllocationRecord.sick_days;
 	} else {
 		return 0;
 	}
+}
+
+var getAllocations = function () {
+	return Allocations.findOne({ userId: Meteor.user()._id });
 }
