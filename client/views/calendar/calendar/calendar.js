@@ -20,7 +20,7 @@ Template.calendar.rendered = function() {
 			callback(events);
 		},
 		dayClick: function(date, allDay, jsEvent, view) {
-			//console.log(date.getDay());, potentially set something here if sat/sun/stat to prevent context menu
+			// potentially set something here if sat/sun/stat to prevent context menu
 			dateSelected = formatDate(date);
 		},
 		eventClick: function(calEvent, jsEvent, view) {
@@ -60,31 +60,16 @@ setUpContextMenu = function() {
 
 handleContextMenuSelection = function(selection) {
 	type = $(selection).text();
-	// potentially change title so that more phone friendly
-	// if (type === 'Sick Day')
-	// {
-	// 	title = 'Sick'; or S
-	// }
-	// else if (type === 'Vacation Day') {
-	// 	title = 'Off'; or V
-	// }
-	// else if (type === 'Personal Day') {
-	// 	title = 'PD'; or P
-	// }
- 	
-	existingEvent = Events.findOne({start: dateSelected});
-	if (existingEvent) {
-		if (type === 'Cancel') {
-			Events.remove(existingEvent._id);
-			clearBackgroundColor(existingEvent);
-		}	else {
-			Events.update(existingEvent._id, {$set: {title: 'type', type: type}});
+	var eventInstance = {
+		type: type,
+		date: dateSelected
+	};
+
+	Meteor.call('saveEvent', eventInstance, function (error, result) {
+		if (error) {
+			console.log(error);
 		}
-	} else {
-		if (type !== 'Cancel') {
-			Events.insert({title: type, type: type, start: dateSelected, end: dateSelected});
-		}
-	} 
+	});
 }
 
 formatEventsRetrievedFromServer = function() {

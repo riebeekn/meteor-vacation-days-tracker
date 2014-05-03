@@ -27,9 +27,9 @@ Template.daysRemaining.events({
 			type: constants.VACATION_DAY
 		};
 
-		Meteor.call('save', allocation, function(error, allocationId) {
+		Meteor.call('saveAllocations', allocation, function(error, allocationId) {
 			if (error) {
-				throwError(error.reason);
+				console.log(error);
 			} 
 		});
 	},
@@ -40,9 +40,9 @@ Template.daysRemaining.events({
 			type: constants.PERSONAL_DAY
 		};
 
-		Meteor.call('save', allocation, function(error, allocationId) {
+		Meteor.call('saveAllocations', allocation, function(error, allocationId) {
 			if (error) {
-				throwError(error.reason);
+				console.log(error);
 			} 
 		});
 	},
@@ -53,9 +53,9 @@ Template.daysRemaining.events({
 			type: constants.SICK_DAY
 		};
 
-		Meteor.call('save', allocation, function(error, allocationId) {
+		Meteor.call('saveAllocations', allocation, function(error, allocationId) {
 			if (error) {
-				throwError(error.reason);
+				console.log(error);
 			} 
 		});
 	}
