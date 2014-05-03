@@ -11,7 +11,7 @@ Meteor.methods({
 			if (eventAttributes.type === 'Cancel') {
 				Events.remove(existingEvent._id);
 			}	else {
-				Events.update(existingEvent._id, {$set: {title: 'type', type: eventAttributes.type}});
+				Events.update(existingEvent._id, {$set: {title: eventAttributes.type, type: eventAttributes.type}});
 			}
 		} else {
 			if (eventAttributes.type !== 'Cancel') {

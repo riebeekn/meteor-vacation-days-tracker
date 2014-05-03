@@ -20,13 +20,11 @@ Template.calendar.rendered = function() {
 			callback(events);
 		},
 		dayClick: function(date, allDay, jsEvent, view) {
-			// potentially set something here if sat/sun/stat to prevent context menu
 			dateSelected = formatDate(date);
 		},
 		eventClick: function(calEvent, jsEvent, view) {
 			dateSelected = formatDate(calEvent.start);
-		},
-		eventBorderColor: '#aaa'
+		}
 	});
 
 	setUpContextMenu();
@@ -60,14 +58,18 @@ setUpContextMenu = function() {
 
 handleContextMenuSelection = function(selection) {
 	type = $(selection).text();
-	var eventInstance = {
+	var event = {
 		type: type,
 		date: dateSelected
 	};
 
-	Meteor.call('saveEvent', eventInstance, function (error, result) {
+	Meteor.call('saveEvent', event, function (error, result) {
 		if (error) {
 			console.log(error);
+		} else {
+			if (type === 'Cancel') {
+				clearBackgroundColor(event);
+			}
 		}
 	});
 }
@@ -99,7 +101,7 @@ setBackgroundColorOfEvent = function(event) {
 }
 
 clearBackgroundColor = function(event) {
-	$('.fc-day[data-date="' + event.start + '"]').removeClass('holiday').
+	$('.fc-day[data-date="' + event.date + '"]').removeClass('holiday').
 	                                              removeClass('sick-day');
 }
 

@@ -6,7 +6,7 @@ Meteor.methods({
 		if (!user)
 			throw new Meteor.Error(401, "You need to login!");
 
-		var existingAllocationRecord = getAllocations();
+		var existingAllocationRecord = Allocations.findOne({ userId: Meteor.user()._id });
 
 		if (existingAllocationRecord) {
 			if (allocationAttributes.type === constants.VACATION_DAY) {
@@ -27,7 +27,3 @@ Meteor.methods({
 		}
 	}
 });
-
-var getAllocations = function () {
-	return Allocations.findOne({ userId: Meteor.user()._id });
-}
