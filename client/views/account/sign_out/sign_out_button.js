@@ -3,5 +3,6 @@ Template.signOutButton.events({
 		e.preventDefault();
 		
 		Meteor.logout();
+		AccountsSessionHelper.setDisplayToSignInForm();
 	}
 });
