@@ -1,5 +1,12 @@
 Router.configure({
-	layoutTemplate: 'layout'
+	layoutTemplate: 'layout',
+	loadingTemplate: 'loading',
+	waitOn: function() { 
+		return [
+			Meteor.subscribe('allocations'), 
+		  Meteor.subscribe('events')
+		]; 
+	} 
 });
 
 Router.map(function() {
@@ -8,3 +15,5 @@ Router.map(function() {
 		template: 'calendarLayout'
 	});
 });
+
+Router.onBeforeAction('loading');
