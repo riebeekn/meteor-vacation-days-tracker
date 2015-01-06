@@ -1,7 +1,5 @@
 {
   "packages": {
-    "iron-router": {},
-    "fullcalendar": {},
-    "spin": {}
+    "fullcalendar": {}
   }
 }

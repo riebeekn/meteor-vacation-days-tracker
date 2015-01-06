@@ -4,9 +4,9 @@
 # but you can also edit it by hand.
 
 standard-app-packages
-iron-router
-fullcalendar
 bootstrap
 accounts-base
 accounts-password
-spin
+sacha:spin
+iron:router
+fullcalendar
