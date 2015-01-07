@@ -187,6 +187,13 @@ christmas = {
 
 // Boxing Day - 26th Dec
 bd = new Date(currentYear, 11, 26);
+if (bd.getDay() == 0) {
+	offset = 1;
+} else if (bd.getDay() == 6) {
+	offset = 2;
+} else {
+	offset = 0;
+}
 bd.setDate(bd.getDate() + offset);
 bd = formatDate(bd);
 boxingDay = {
